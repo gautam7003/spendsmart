@@ -1,0 +1,145 @@
+:root {
+  --primary-navy: #1a2a44;
+  --secondary-navy: #0d1b2a;
+  --accent-blue: #2563eb;
+  --income-green: #10b981;
+  --expense-red: #ef4444;
+  --warning-orange: #f59e0b;
+  --neutral-bg: #f8fafc;
+  --card-bg: #ffffff;
+  --border-color: #e2e8f0;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: var(--neutral-bg);
+  color: #1e293b;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  min-height: 100vh;
+  background-color: var(--secondary-navy);
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.sidebar .nav-link {
+  color: #94a3b8;
+  font-weight: 500;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.sidebar .nav-link:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.sidebar .nav-link.active {
+  color: #ffffff;
+  background-color: var(--accent-blue);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+/* Stat Cards */
+.stat-card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: #ffffff;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.stat-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+/* Card Styling */
+.card {
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.card-header {
+  background-color: transparent;
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem 1.25rem;
+}
+
+/* Badges */
+.badge-income {
+  background-color: #d1fae5;
+  color: #065f46;
+  font-weight: 600;
+  border: 1px solid #a7f3d0;
+}
+
+.badge-expense {
+  background-color: #fee2e2;
+  color: #991b1b;
+  font-weight: 600;
+  border: 1px solid #fecaca;
+}
+
+/* Progress bars */
+.progress-budget {
+  height: 10px;
+  border-radius: 5px;
+  background-color: #e2e8f0;
+}
+
+/* Tables */
+.table th {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  border-top: none;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+/* Alerts */
+.budget-alert-card {
+  border-left: 4px solid var(--expense-red);
+}
+
+.budget-warning-card {
+  border-left: 4px solid var(--warning-orange);
+}
