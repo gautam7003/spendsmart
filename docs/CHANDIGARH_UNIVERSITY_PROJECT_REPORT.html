@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chandigarh University - Project Report: SpendSmart</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 20mm 15mm 20mm 15mm;
+    }
+    body {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 11pt;
+      line-height: 1.5;
+      color: #111;
+      margin: 0;
+      padding: 20px 40px;
+    }
+    .page-break {
+      page-break-after: always;
+      break-after: page;
+    }
+    h1 {
+      font-size: 16pt;
+      text-align: center;
+      margin-top: 25px;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+    h2 {
+      font-size: 13pt;
+      border-bottom: 1.5px solid #333;
+      padding-bottom: 4px;
+      margin-top: 20px;
+    }
+    h3 {
+      font-size: 11.5pt;
+      margin-top: 15px;
+    }
+    p {
+      text-align: justify;
+      margin-bottom: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0;
+      font-size: 9.5pt;
+    }
+    table, th, td {
+      border: 1px solid #444;
+    }
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+      padding: 6px 8px;
+      text-align: left;
+    }
+    td {
+      padding: 5px 8px;
+    }
+    pre {
+      padding: 10px;
+      background-color: #f8f9fa;
+      border: 1px solid #ddd;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 8.5pt;
+      line-height: 1.3;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+    code {
+      font-family: 'Courier New', Courier, monospace;
+      background-color: #f4f4f4;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-size: 9pt;
+    }
+    ul, ol {
+      margin-top: 4px;
+      margin-bottom: 10px;
+    }
+    li {
+      margin-bottom: 4px;
+    }
+  </style>
+</head>
+<body>
+<h1>CHANDIGARH UNIVERSITY</h1>
+<h3>DEPARTMENT OF COMPUTER APPLICATIONS</h3>
+<hr>
+<br><h1>SPENDSMART — SMART EXPENSE &amp; BUDGET MANAGER</h1>
+<h3>A FULL-STACK WEB APPLICATION FOR PERSONAL FINANCIAL TRACKING &amp; THRESHOLD OPTIMIZATION</h3>
+<br><p><strong>A TECHNICAL TRAINING PROJECT REPORT</strong></p>
+<p><em>Submitted by</em></p>
+<h3><strong>GAUTAM MISHRA (25MCI10343)</strong></h3>
+<p><em>in partial fulfillment for the award of the degree of</em></p>
+<h3><strong>MASTER OF COMPUTER APPLICATIONS</strong></h3>
+<h3><strong>CHANDIGARH UNIVERSITY</strong></h3>
+<p><em>Discover. Learn. Empower.</em></p>
+<p><strong>OCTOBER 2026</strong></p>
+<hr>
+<div class="page-break"></div><h1>CHANDIGARH UNIVERSITY</h1>
+<h2>BONAFIDE CERTIFICATE</h2>
+<p>Certified that this technical training project report <strong>“SPENDSMART — SMART EXPENSE &amp; BUDGET MANAGER”</strong> is the bonafide work of <strong>GAUTAM MISHRA (25MCI10343)</strong> who carried out the project work under my supervision.</p>
+<p><br><br><br></p>
+<p><strong>Project Guide / Mentor</strong><br>Department of Computer Applications<br>Chandigarh University  </p>
+<p><br><br><br></p>
+<p>Submitted for the project viva-voce examination held on: _______________________</p>
+<p><br><br></p>
+<p><strong>INTERNAL EXAMINER</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>EXTERNAL EXAMINER</strong></p>
+<hr>
+<div class="page-break"></div><h1>TABLE OF CONTENTS</h1>
+<ul>
+<li><strong>Contents</strong> .................................................................................................................................... i</li>
+<li><strong>List of Figures</strong> .......................................................................................................................... iv</li>
+<li><strong>List of Tables</strong> ........................................................................................................................... v</li>
+<li><strong>List of Standards</strong> ..................................................................................................................... vi</li>
+<li><strong>ABSTRACT</strong> ................................................................................................................................ 1</li>
+<li><strong>GRAPHICAL ABSTRACT / SYSTEM ARCHITECTURE</strong> ......................................................... 2</li>
+<li><strong>ABBREVIATIONS</strong> ...................................................................................................................... 3</li>
+<li><strong>MATHEMATICAL FORMULATIONS &amp; SYMBOLS</strong> ................................................................. 4</li>
+</ul>
+<h3>1. INTRODUCTION ..................................................................................................................... 5</h3>
+<ul>
+<li>1.1 Identification of Need &amp; Contemporary Issue .................................................................... 5</li>
+<li>1.2 Background and Motivation ................................................................................................ 6</li>
+<li>1.3 Identification of Problem ..................................................................................................... 7</li>
+<li>1.4 Problem Context &amp; Proposed Full-Stack Solution ................................................................ 8</li>
+<li>1.5 Identification of Tasks &amp; Engineering Modules ................................................................. 9<ul>
+<li>1.5.1 Secure Multi-Tenant Authentication &amp; Session Management ................................... 9</li>
+<li>1.5.2 Transaction Ledger Management Engine (CRUD) ..................................................... 9</li>
+<li>1.5.3 Dynamic Budgeting &amp; Threshold Alert Subsystem ..................................................... 10</li>
+<li>1.5.4 Analytical Visualization &amp; Historical Trend Modeling .............................................. 10</li>
+<li>1.5.5 Client User Interface &amp; Responsive Component Design ........................................... 11</li>
+<li>1.5.6 REST API &amp; Cloud Database Deployment ................................................................. 11</li>
+</ul>
+</li>
+<li>1.6 Objectives of the Project ..................................................................................................... 11</li>
+<li>1.7 Scope of the Project ............................................................................................................ 12</li>
+<li>1.8 Expected Outcomes ............................................................................................................ 13</li>
+<li>1.9 Implementation Timeline .................................................................................................... 13</li>
+<li>1.10 Organization of the Report ............................................................................................... 14</li>
+<li>1.11 Chapter Summary ............................................................................................................. 15</li>
+</ul>
+<h3>2. LITERATURE REVIEW &amp; BACKGROUND STUDY ............................................................. 16</h3>
+<ul>
+<li>2.1 Introduction ......................................................................................................................... 16</li>
+<li>2.2 Evolution of Personal Financial Tracking ............................................................................ 16<ul>
+<li>2.2.1 Manual Bookkeeping vs. Spreadsheets ....................................................................... 17</li>
+<li>2.2.2 Web-Based Automated Financial Systems ................................................................. 18</li>
+</ul>
+</li>
+<li>2.3 Existing Solutions &amp; Industry Baselines ............................................................................. 18<ul>
+<li>2.3.1 Proprietary Commercial Banking Applications .......................................................... 18</li>
+<li>2.3.2 Third-Party Aggregators &amp; Data Privacy Risks ........................................................... 19</li>
+<li>2.3.3 Open-Source Desktop Budget Systems ...................................................................... 19</li>
+</ul>
+</li>
+<li>2.4 Comparative Analysis of Existing Approaches .................................................................... 20</li>
+<li>2.5 Security, Authentication &amp; Data Protection Trends ............................................................ 21</li>
+<li>2.6 Research and Engineering Gap ............................................................................................ 22</li>
+<li>2.7 Problem Definition ............................................................................................................... 23</li>
+<li>2.8 Project Goals &amp; Success Criteria .......................................................................................... 24</li>
+<li>2.9 Chapter Conclusion ............................................................................................................. 25</li>
+</ul>
+<h3>3. DESIGN FLOW &amp; SYSTEM METHODOLOGY .................................................................... 26</h3>
+<ul>
+<li>3.1 Introduction ......................................................................................................................... 26</li>
+<li>3.2 Overall Architectural Design ............................................................................................... 26</li>
+<li>3.3 Database Design &amp; Mongoose Schemas .............................................................................. 28<ul>
+<li>3.3.1 User Identity Collection ............................................................................................. 28</li>
+<li>3.3.2 Transactions Collection &amp; Compound Indexing ......................................................... 29</li>
+<li>3.3.3 Category Budgets Collection with Compound Uniqueness ....................................... 30</li>
+</ul>
+</li>
+<li>3.4 REST API Architecture &amp; Route Specifications .................................................................. 31</li>
+<li>3.5 Security Design &amp; Middleware Implementation ................................................................. 33<ul>
+<li>3.5.1 Cryptographic Salt Hashing via bcryptjs .................................................................... 33</li>
+<li>3.5.2 Stateless Bearer JWT Token Verification ................................................................... 34</li>
+<li>3.5.3 Rate Limiting &amp; Origin Security ................................................................................ 34</li>
+</ul>
+</li>
+<li>3.6 Frontend Client Architecture (React 18 &amp; Bootstrap 5) ....................................................... 35<ul>
+<li>3.6.1 Layout, Protected Routing &amp; Global State ................................................................. 35</li>
+<li>3.6.2 Currency &amp; Date Formatting for Indian Demographics ............................................. 36</li>
+</ul>
+</li>
+<li>3.7 Budget Utilization &amp; Analytical Calculation Logic ............................................................... 37</li>
+<li>3.8 Chapter Summary ............................................................................................................... 38</li>
+</ul>
+<h3>4. RESULTS ANALYSIS AND SYSTEM VALIDATION ........................................................... 39</h3>
+<ul>
+<li>4.1 Implementation Environment ............................................................................................. 39</li>
+<li>4.2 REST API Test Cases &amp; Validation Matrix ........................................................................... 40</li>
+<li>4.3 Screen-by-Screen User Interface Demonstration ................................................................. 42<ul>
+<li>4.3.1 Authentication &amp; Registration Portal ......................................................................... 42</li>
+<li>4.3.2 Financial Dashboard &amp; Metric Visualizations ............................................................. 43</li>
+<li>4.3.3 Transaction Management &amp; Filter Workspace .......................................................... 44</li>
+<li>4.3.4 Budget Utilization &amp; Alert Notification Cards ........................................................... 45</li>
+<li>4.3.5 Reports, Month-over-Month Analytics &amp; Category Distribution ............................... 46</li>
+</ul>
+</li>
+<li>4.4 Cloud Database Validation (MongoDB Compass &amp; Atlas) .................................................. 47</li>
+</ul>
+<h3>5. CONCLUSION AND FUTURE SCOPE ................................................................................ 48</h3>
+<ul>
+<li>5.1 Conclusion ........................................................................................................................... 48</li>
+<li>5.2 Limitations ........................................................................................................................... 48</li>
+<li>5.3 Future Work ......................................................................................................................... 49</li>
+</ul>
+<h3>REFERENCES ............................................................................................................................ 50</h3>
+<h3>APPENDIX ................................................................................................................................. 51</h3>
+<ul>
+<li>A. User Manual &amp; Local Installation Guide .............................................................................. 51</li>
+<li>B. Viva Voce Preparation Guide (High-Yield Questions &amp; Answers) ......................................... 53</li>
+</ul>
+<hr>
+<div class="page-break"></div><h1>LIST OF FIGURES</h1>
+<ul>
+<li><strong>Figure 1.1:</strong> Conceptual 3-Tier Full-Stack Architecture of SpendSmart ................................. 8</li>
+<li><strong>Figure 2.1:</strong> Evolution of Personal Expense Record Keeping into Web Architectures ......... 17</li>
+<li><strong>Figure 3.1:</strong> Entity-Relationship (ER) Schema of SpendSmart Database ............................ 28</li>
+<li><strong>Figure 3.2:</strong> State Machine Flow for Budget Threshold Warning &amp; Breach Alerts .............. 37</li>
+<li><strong>Figure 4.1:</strong> SpendSmart User Registration and Secure Login Interface ............................ 42</li>
+<li><strong>Figure 4.2:</strong> SpendSmart Comprehensive Financial Dashboard with Metric Cards ............. 43</li>
+<li><strong>Figure 4.3:</strong> Transaction Ledger Workspace with Category &amp; Date Filter Controls ........... 44</li>
+<li><strong>Figure 4.4:</strong> Monthly Budget Management Interface with Warning Progress Bars ............ 45</li>
+<li><strong>Figure 4.5:</strong> Reports and Analytical Distribution Dashboard (Chart.js Visualization) ....... 46</li>
+<li><strong>Figure 4.6:</strong> Live Cloud Database Collection Verification in MongoDB Compass ............. 47</li>
+<li><strong>Figure 5.1:</strong> Terminal Verification of Git Repository &amp; Production Build .......................... 52</li>
+</ul>
+<hr>
+<h1>LIST OF TABLES</h1>
+<ul>
+<li><strong>Table 1.1:</strong> Project Implementation Timeline across 14-Week Lifecycle ............................. 14</li>
+<li><strong>Table 2.1:</strong> Comparative Analysis of Financial Tracking Methodologies ............................. 20</li>
+<li><strong>Table 3.1:</strong> Summary of Supported Income &amp; Expense Categories ....................................... 30</li>
+<li><strong>Table 3.2:</strong> Complete SpendSmart REST API Specification Table ........................................ 32</li>
+<li><strong>Table 4.1:</strong> QA Testing Results and REST API Validation Matrix (17 Cases) ........................ 40</li>
+</ul>
+<hr>
+<h1>LIST OF STANDARDS</h1>
+<table>
+<thead>
+<tr>
+<th>Standard</th>
+<th>Publishing Agency</th>
+<th>Scope &amp; Application in Project</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>RFC 7519</strong></td>
+<td>IETF</td>
+<td>JSON Web Token (JWT) architecture used for secure, stateless client-server session authorization.</td>
+</tr>
+<tr>
+<td><strong>RFC 6750</strong></td>
+<td>IETF</td>
+<td>The OAuth 2.0 Authorization Framework: Bearer Token Usage implemented across HTTP headers.</td>
+</tr>
+<tr>
+<td><strong>ISO/IEC 27001</strong></td>
+<td>ISO / IEC</td>
+<td>Information Security Management criteria applied for one-way salt hashing (bcrypt) and credential isolation.</td>
+</tr>
+<tr>
+<td><strong>W3C ECMAScript 2023</strong></td>
+<td>W3C / ECMA</td>
+<td>Modern JavaScript standards applied across Node.js runtime and React 18 frontend components.</td>
+</tr>
+</tbody></table>
+<hr>
+<div class="page-break"></div><h1>ABSTRACT</h1>
+<p>In modern personal financial planning, individuals—especially students and young professionals—frequently experience cash-flow deficits due to unmonitored discretionary spending, the absence of categorical allocation limits, and an inability to visualize expenditure patterns. Traditional approaches such as paper notebooks or complex spreadsheets lack real-time calculations, fail to trigger automated warnings, and do not offer secure multi-user accessibility.</p>
+<p>This project delivers <strong>SpendSmart — Smart Expense &amp; Budget Manager</strong>, an end-to-end full-stack web application designed and built for the postgraduate Master of Computer Applications (MCA) Technical Training evaluation. SpendSmart implements a decoupled 3-tier architecture using the <strong>MERN</strong> stack (MongoDB Atlas, Express.js, React 18, and Node.js) styled with <strong>Bootstrap 5</strong>. The backend provides robust RESTful web services protected by stateless JSON Web Token (JWT) authorization, salted password hashing via <code>bcryptjs</code>, and IP rate-limiting. The transactional engine supports full CRUD operations, multi-parameter querying (type, category, date range, and text search), and strict user record ownership verification.</p>
+<p>A core innovation of SpendSmart is its <strong>Dual-Threshold Budget Alert Subsystem</strong>. Users establish monthly spending limits for expense categories; the system dynamically aggregates expenditures and displays real-time visual warnings when consumption reaches 80% and over-budget breach indicators when 100% is exceeded. Analytical reporting is driven by <strong>Chart.js</strong>, rendering dynamic 6-month comparative income-versus-expense trends and category distribution doughnut charts. All financial figures are natively formatted in Indian Rupees (₹ - INR). Evaluated against 17 rigorous test cases in Postman and verified in production across MongoDB Atlas and modern web browsers, SpendSmart provides an intuitive, reliable, and secure personal financial management solution suitable for demonstration and viva assessment.</p>
+<hr>
+<div class="page-break"></div><h1>GRAPHICAL ABSTRACT / SYSTEM ARCHITECTURE</h1>
+<pre><code>+-----------------------------------------------------------------------------------+
+|                           1. CLIENT PRESENTATION LAYER                            |
+|                                                                                   |
+|  [ React 18 SPA ]  &lt;---&gt;  [ React Router v6 ]  &lt;---&gt;  [ Context API (Auth State) ] |
+|          |                         |                                 |            |
+|  [ Bootstrap 5 UI ]       [ Chart.js Charts ]              [ Axios Client ]       |
+|  - Navy/White Design      - 6-Month Income vs Exp Trend    - JWT Bearer Header    |
+|  - Stat Cards &amp; Modals    - Category Expense Doughnut      - 401 Interceptors     |
++-----------------------------------------------------------------------------------+
+                                          |
+                                   HTTPS / REST API
+                                          |
++-----------------------------------------------------------------------------------+
+|                         2. APPLICATION SERVICE TIER                               |
+|                                                                                   |
+|  [ Express.js Framework ] &lt;---&gt; [ Security Layer: Rate Limiter &amp; CORS Policy ]    |
+|          |                                                                        |
+|  [ JWT Authentication Middleware (Token Decryption &amp; Session Protection) ]        |
+|          |                                                                        |
+|  +---------------------+ +----------------------+ +-----------------------------+ |
+|  |   Auth Controller   | | Transaction Controller| | Budget &amp; Analytics Engine   | |
+|  | - bcryptjs Hashing  | | - Full CRUD          | | - 80% Warning Threshold     | |
+|  | - Token Issuance    | | - Filter/Search/Sort | | - 100% Exceeded Threshold   | |
+|  +---------------------+ +----------------------+ +-----------------------------+ |
++-----------------------------------------------------------------------------------+
+                                          |
+                                Mongoose ODM / TCP 27017
+                                          |
++-----------------------------------------------------------------------------------+
+|                           3. PERSISTENT STORAGE LAYER                             |
+|                                                                                   |
+|  [ MongoDB Atlas Cloud Cluster / spendsmart_db ]                                  |
+|                                                                                   |
+|  - Users Collection: Hashed credentials, unique email constraint                  |
+|  - Transactions Collection: Indexed on (userId, transactionDate, type)            |
+|  - Budgets Collection: Compound Unique Index (userId + category + month + year)   |
++-----------------------------------------------------------------------------------+
+</code></pre>
+<p><strong>Figure 1.1:</strong> System Architecture encompassing Presentation, Express Application Services, and Cloud MongoDB Persistence.</p>
+<hr>
+<div class="page-break"></div><h1>ABBREVIATIONS</h1>
+<table>
+<thead>
+<tr>
+<th>Abbreviation</th>
+<th>Expansion</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>API</strong></td>
+<td>Application Programming Interface</td>
+</tr>
+<tr>
+<td><strong>Bcrypt</strong></td>
+<td>Blowfish-based Adaptive Cryptographic Hashing Function</td>
+</tr>
+<tr>
+<td><strong>CORS</strong></td>
+<td>Cross-Origin Resource Sharing</td>
+</tr>
+<tr>
+<td><strong>CRUD</strong></td>
+<td>Create, Read, Update, Delete</td>
+</tr>
+<tr>
+<td><strong>CSS</strong></td>
+<td>Cascading Style Sheets</td>
+</tr>
+<tr>
+<td><strong>DOM</strong></td>
+<td>Document Object Model</td>
+</tr>
+<tr>
+<td><strong>HTML</strong></td>
+<td>HyperText Markup Language</td>
+</tr>
+<tr>
+<td><strong>HTTP</strong></td>
+<td>HyperText Transfer Protocol</td>
+</tr>
+<tr>
+<td><strong>INR</strong></td>
+<td>Indian Rupee (₹)</td>
+</tr>
+<tr>
+<td><strong>JSON</strong></td>
+<td>JavaScript Object Notation</td>
+</tr>
+<tr>
+<td><strong>JWT</strong></td>
+<td>JSON Web Token</td>
+</tr>
+<tr>
+<td><strong>MCA</strong></td>
+<td>Master of Computer Applications</td>
+</tr>
+<tr>
+<td><strong>MERN</strong></td>
+<td>MongoDB, Express.js, React, Node.js</td>
+</tr>
+<tr>
+<td><strong>MVC</strong></td>
+<td>Model-View-Controller</td>
+</tr>
+<tr>
+<td><strong>ODM</strong></td>
+<td>Object Data Modeling</td>
+</tr>
+<tr>
+<td><strong>REST</strong></td>
+<td>Representational State Transfer</td>
+</tr>
+<tr>
+<td><strong>SPA</strong></td>
+<td>Single Page Application</td>
+</tr>
+<tr>
+<td><strong>UI / UX</strong></td>
+<td>User Interface / User Experience</td>
+</tr>
+<tr>
+<td><strong>URI</strong></td>
+<td>Uniform Resource Identifier</td>
+</tr>
+</tbody></table>
+<hr>
+<div class="page-break"></div><h1>MATHEMATICAL FORMULATIONS &amp; SYMBOLS</h1>
+<h3>1. Net Cash Balance Formulation</h3>
+<p>The liquid financial position of an authenticated user for any selected temporal window $T$ (typically month $m$ and year $y$) is governed by:</p>
+<p>$$\text{Net Balance}<em>T = \sum</em>{i=1}^{N_{\text{income}}} \text{Amount}<em>{i,\text{income}} - \sum</em>{j=1}^{N_{\text{expense}}} \text{Amount}_{j,\text{expense}}$$</p>
+<p>Where:</p>
+<ul>
+<li>$\text{Amount}_{i,\text{income}}$ represents the rupee value of the $i$-th income transaction.</li>
+<li>$\text{Amount}_{j,\text{expense}}$ represents the rupee value of the $j$-th expense transaction.</li>
+</ul>
+<h3>2. Category Budget Utilization Percentage</h3>
+<p>The budget consumption metric for an expense category $C$ over month $m$ and year $y$ is computed as:</p>
+<p>$$\text{Utilization Percentage}(C, m, y) = \left( \frac{\sum_{k \in \text{Tx}(C, m, y)} \text{Amount}_k}{\text{MonthlyLimit}(C, m, y)} \right) \times 100$$</p>
+<p>Where:</p>
+<ul>
+<li>$\text{MonthlyLimit}(C, m, y)$ is the user-defined ceiling for that category.</li>
+<li>$\text{Tx}(C, m, y)$ denotes the subset of expense transactions belonging to category $C$ in month $m$, year $y$.</li>
+</ul>
+<h3>3. Threshold State Categorization</h3>
+<p>The status function $S(C)$ determines UI alert badges and warning banners:</p>
+<p>$$S(C) = \begin{cases} 
+\text{Normal (Green)}, &amp; \text{if } \text{Utilization Percentage} &lt; 80% \
+\text{Warning (Amber)}, &amp; \text{if } 80% \le \text{Utilization Percentage} &lt; 100% \
+\text{Exceeded (Red)}, &amp; \text{if } \text{Utilization Percentage} \ge 100% 
+\end{cases}$$</p>
+<h3>4. Month-over-Month Expenditure Growth</h3>
+<p>$$\Delta \text{Expense} (%) = \left( \frac{\text{Expenses}<em>{\text{current}} - \text{Expenses}</em>{\text{previous}}}{\text{Expenses}_{\text{previous}}} \right) \times 100$$</p>
+<hr>
+<div class="page-break"></div><h1>CHAPTER 1: INTRODUCTION</h1>
+<h2>1.1 Identification of Need &amp; Contemporary Issue</h2>
+<p>In the modern digital economic landscape, individuals perform dozens of micro and macro transactions daily via Unified Payments Interface (UPI), credit cards, debit cards, and net banking. While electronic payments have simplified transactions, they have inadvertently heightened the risk of <strong>discretionary overspending</strong>. Because physical currency does not change hands, users experience diminished psychological friction when spending, frequently resulting in month-end deficits.</p>
+<p>Contemporary surveys among university postgraduate students and early-career software engineers reveal three prominent financial behavior gaps:</p>
+<ol>
+<li><strong>Lack of Category Awareness:</strong> Users rarely track what proportion of their income is spent on dining, entertainment, shopping, or commute.</li>
+<li><strong>Absence of Proactive Budget Limits:</strong> Traditional banking applications notify users only after their account balance is depleted; they do not enforce predictive category limits.</li>
+<li><strong>Data Fragmentation and Privacy Concerns:</strong> Existing third-party tracker apps often require invasive access to SMS messages and personal bank accounts, raising major privacy concerns under data protection laws.</li>
+</ol>
+<p>Hence, there is a clear academic and practical need for a dedicated, privacy-focused, web-based financial ledger and budget supervisor that allows users to record, categorize, inspect, and budget their finances securely without exposing sensitive banking credentials.</p>
+<h2>1.2 Background and Motivation</h2>
+<p>Personal financial management systems have evolved from physical double-entry ledger notebooks to digital tools. While spreadsheet software (such as Microsoft Excel or Google Sheets) is capable of recording transactions, it introduces significant friction: users must manually construct sum formulas, spreadsheet files are difficult to navigate on mobile devices, and they lack automated alert mechanisms.</p>
+<p>Full-stack web technologies offer an ideal foundation for resolving these limitations:</p>
+<ul>
+<li><strong>Node.js and Express.js</strong> allow the creation of high-throughput REST APIs that can parse and persist financial records in milliseconds.</li>
+<li><strong>MongoDB</strong> provides a schema-flexible document store capable of indexing dynamic transaction records.</li>
+<li><strong>React 18</strong> enables a single-page application (SPA) architecture where dashboard totals, transaction lists, and chart visualizations update instantaneously without full page reloads.</li>
+</ul>
+<p>The motivation behind <strong>SpendSmart</strong> is to engineer a reliable, medium-level full-stack web application for the MCA Technical Training curriculum that demonstrates mastery over modern web frameworks, database indexing, user authentication, and data visualization.</p>
+<h2>1.3 Identification of Problem</h2>
+<p>The primary problem addressed in this project is the lack of an integrated, secure, and visual system for monitoring personal income, expenses, and category budgets in Indian currency.</p>
+<p>Specifically:</p>
+<ul>
+<li><strong>Unstructured Expense Recording:</strong> Without structured categorization, users cannot isolate wasteful spending.</li>
+<li><strong>Reactive Rather than Preventive Budgeting:</strong> Most tools only show historical records. They fail to issue warnings when a budget is approaching a dangerous ceiling (e.g., 80% of limit).</li>
+<li><strong>Security Vulnerabilities in Novice Web Applications:</strong> Many student projects store plaintext passwords or trust client-supplied user IDs, enabling unauthorized cross-user data access. SpendSmart strictly resolves this through cryptographic hashing and token authorization.</li>
+</ul>
+<h2>1.4 Problem Context &amp; Proposed Full-Stack Solution</h2>
+<p>SpendSmart resolves the identified problem through a structured, 3-tier architecture:</p>
+<ol>
+<li><strong>Client Tier:</strong> A responsive Bootstrap 5 interface built with React components, providing accessible forms, status indicators, and Chart.js graphs.</li>
+<li><strong>Server Tier:</strong> An Express.js backend exposing RESTful endpoints with input validation, JWT authentication, and centralized error handling.</li>
+<li><strong>Database Tier:</strong> A MongoDB Atlas cloud database storing normalized documents across <code>users</code>, <code>transactions</code>, and <code>budgets</code> collections.</li>
+</ol>
+<h2>1.5 Identification of Tasks &amp; Engineering Modules</h2>
+<p>To deliver the project methodically within the Technical Training timeline, work was divided into six core modules:</p>
+<ul>
+<li><strong>1.5.1 Secure Multi-Tenant Authentication:</strong> Registration, login, password hashing with bcryptjs (salt factor 10), and JWT generation.</li>
+<li><strong>1.5.2 Transaction Ledger Management Engine:</strong> Complete CRUD functionality for income and expense records with category filtering, date-range filtering, and regex text search.</li>
+<li><strong>1.5.3 Dynamic Budgeting &amp; Threshold Alert Subsystem:</strong> Monthly budget limit setting per category, expense aggregation, and dual-state alerts (80% warning and 100% breach).</li>
+<li><strong>1.5.4 Analytical Visualization &amp; Historical Trend Modeling:</strong> Monthly trend bar charts and category distribution doughnut charts via Chart.js.</li>
+<li><strong>1.5.5 Client User Interface &amp; Responsive Component Design:</strong> Bootstrap 5 layout with a navy-blue palette, stat cards, progress bars, and modal forms.</li>
+<li><strong>1.5.6 REST API &amp; Cloud Database Deployment:</strong> Configuration of MongoDB Atlas, environment variable security, and Postman API verification.</li>
+</ul>
+<h2>1.6 Objectives of the Project</h2>
+<ol>
+<li>To design and implement a secure authentication subsystem ensuring strict multi-tenant data isolation.</li>
+<li>To build an intuitive transaction management system supporting positive amount validation, category tagging, and date sorting.</li>
+<li>To develop an automated budget engine that computes real-time category utilization percentages.</li>
+<li>To establish dual-stage visual alerts: an amber warning at 80% consumption and a red indicator upon budget breach.</li>
+<li>To generate real-time financial dashboards depicting Net Balance, Total Inflow, Total Outflow, and transaction counts without hardcoded values.</li>
+<li>To implement dynamic Chart.js visualizations for 6-month historical trends and expense breakdowns.</li>
+<li>To format all monetary metrics in Indian Rupee (₹ - INR) standards.</li>
+<li>To validate all REST endpoints against standard HTTP response codes and error criteria.</li>
+</ol>
+<h2>1.7 Scope of the Project</h2>
+<p>The application is scoped as a functional, production-ready personal expense management tool suitable for postgraduate technical demonstration:</p>
+<ul>
+<li><strong>In Scope:</strong> Full-stack MERN development, token authentication, transaction CRUD, category budgeting, analytical charts, profile management, and cloud database persistence.</li>
+<li><strong>Out of Scope (By Design):</strong> Direct automated bank API integration (which requires commercial banking licenses), algorithmic stock prediction, and third-party SMS scraping.</li>
+</ul>
+<h2>1.8 Expected Outcomes</h2>
+<ul>
+<li>A completely functional full-stack web application accessible via local and cloud environments.</li>
+<li>Zero data leakage between distinct user accounts.</li>
+<li>Immediate recalculation of financial balances upon adding, editing, or deleting transactions.</li>
+<li>A comprehensive academic report and reproducible test suite for evaluation.</li>
+</ul>
+<h2>1.9 Implementation Timeline</h2>
+<table>
+<thead>
+<tr>
+<th>Duration</th>
+<th>Phase</th>
+<th>Key Deliverables</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Weeks 1–3</strong></td>
+<td>Requirements &amp; Planning</td>
+<td>Problem definition, literature study, system architecture mapping, and technology stack selection.</td>
+</tr>
+<tr>
+<td><strong>Weeks 4–6</strong></td>
+<td>Database &amp; Backend APIs</td>
+<td>Mongoose schemas design, JWT auth middleware, transaction and budget REST controllers, error handling.</td>
+</tr>
+<tr>
+<td><strong>Weeks 7–9</strong></td>
+<td>Frontend Client Development</td>
+<td>React 18 setup, Bootstrap 5 layout, protected routes, stat cards, transaction table, and modal forms.</td>
+</tr>
+<tr>
+<td><strong>Weeks 10–12</strong></td>
+<td>Budget Engine &amp; Visualizations</td>
+<td>Aggregation logic, threshold alerts (80%/100%), Chart.js integration, and profile management.</td>
+</tr>
+<tr>
+<td><strong>Weeks 13–14</strong></td>
+<td>Testing, Cloud Setup &amp; Report</td>
+<td>MongoDB Atlas connection, Postman test suite execution, GitHub repository push, and final report drafting.</td>
+</tr>
+</tbody></table>
+<p><strong>Table 1.1:</strong> Project Implementation Timeline across 14-Week Lifecycle.</p>
+<h2>1.10 Organization of the Report</h2>
+<ul>
+<li><strong>Chapter 2</strong> presents the literature review, background study, and comparative analysis of existing tools.</li>
+<li><strong>Chapter 3</strong> details the system architecture, database schema, REST API design, and security algorithms.</li>
+<li><strong>Chapter 4</strong> presents testing results, API validation matrices, and screen-by-screen UI demonstrations.</li>
+<li><strong>Chapter 5</strong> concludes the report with limitations and future enhancements.</li>
+</ul>
+<hr>
+<div class="page-break"></div><h1>CHAPTER 2: LITERATURE REVIEW &amp; BACKGROUND STUDY</h1>
+<h2>2.1 Introduction</h2>
+<p>Effective management of personal financial resources is a foundational life skill with direct impacts on economic security. With the rapid digitization of currency, software-assisted financial management has become essential. This chapter reviews the history of personal expense systems, examines commercial solutions, analyzes security trends, and establishes the technical gaps addressed by SpendSmart.</p>
+<h2>2.2 Evolution of Personal Financial Tracking</h2>
+<h3>2.2.1 Manual Bookkeeping vs. Spreadsheets</h3>
+<p>For decades, personal financial tracking relied on manual physical diaries. While accessible, paper systems lacked computational capabilities, could not generate alerts, and were susceptible to physical loss. The advent of desktop spreadsheets (Lotus 1-2-3, Microsoft Excel) introduced automated formulas. However, spreadsheets require manual formula maintenance, lack real-time multi-device accessibility, and present steep learning curves for novice users.</p>
+<h3>2.2.2 Web-Based Automated Financial Systems</h3>
+<p>The emergence of web applications built on modern JavaScript frameworks introduced centralized databases, responsive user interfaces, and automated calculations. Modern web applications decouple persistent data storage from client-side presentation, enabling users to access their financial data securely from any browser.</p>
+<h2>2.3 Existing Solutions &amp; Industry Baselines</h2>
+<h3>2.3.1 Proprietary Commercial Banking Applications</h3>
+<p>Modern banking apps provide transaction histories for their respective accounts. However, they operate in silos: a user with accounts across multiple banks cannot view a unified financial picture. Furthermore, they do not accommodate cash transactions, which remain common in India.</p>
+<h3>2.3.2 Third-Party Aggregators &amp; Data Privacy Risks</h3>
+<p>Applications such as Walnut or CRED attempt cross-account aggregation by reading SMS inboxes or accessing net banking credentials. While automated, this poses substantial privacy and security risks. Many users are hesitant to share SMS read permissions with third-party servers. SpendSmart provides a safe alternative where users maintain full control over their financial records without exposing banking credentials.</p>
+<h2>2.4 Comparative Analysis of Existing Approaches</h2>
+<table>
+<thead>
+<tr>
+<th>Feature / Metric</th>
+<th>Physical Paper Ledger</th>
+<th>Excel / Google Sheets</th>
+<th>Third-Party SMS Trackers</th>
+<th>SpendSmart (Proposed System)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Entry Method</strong></td>
+<td>Manual handwriting</td>
+<td>Manual cell entry</td>
+<td>Automated SMS parsing</td>
+<td>Clean web form with input validation</td>
+</tr>
+<tr>
+<td><strong>Real-time Balance</strong></td>
+<td>Manual calculation</td>
+<td>Formula dependent</td>
+<td>Computed</td>
+<td>Automatic on every CRUD operation</td>
+</tr>
+<tr>
+<td><strong>Budget Warnings</strong></td>
+<td>None</td>
+<td>Requires custom formulas</td>
+<td>General notifications</td>
+<td>Proactive visual alerts at 80% &amp; 100%</td>
+</tr>
+<tr>
+<td><strong>Data Privacy</strong></td>
+<td>Physical risk</td>
+<td>Local file risk</td>
+<td>High (reads private SMS)</td>
+<td>High (isolated user data, JWT &amp; bcrypt)</td>
+</tr>
+<tr>
+<td><strong>Visual Charts</strong></td>
+<td>None</td>
+<td>Manual chart setup</td>
+<td>Pre-built</td>
+<td>Dynamic Chart.js trends &amp; breakdowns</td>
+</tr>
+<tr>
+<td><strong>Accessibility</strong></td>
+<td>Single physical book</td>
+<td>Local or cloud file</td>
+<td>Mobile app only</td>
+<td>Cross-platform web application</td>
+</tr>
+</tbody></table>
+<p><strong>Table 2.1:</strong> Comparative Analysis of Financial Tracking Methodologies.</p>
+<h2>2.5 Security, Authentication &amp; Data Protection Trends</h2>
+<p>Security is critical in financial software. Traditional session-based authentication relies on stateful server memory, which limits scalability. The contemporary industry standard uses <strong>JSON Web Tokens (JWT)</strong> under RFC 7519. A signed JWT encapsulates the user&#39;s identity cryptographically, allowing stateless verification across distributed REST API endpoints. Additionally, passwords must never be stored in plaintext or reversible encryption; they must be hashed using salted, adaptive algorithms such as <strong>bcrypt</strong>, which defends against dictionary and rainbow-table attacks.</p>
+<h2>2.6 Research and Engineering Gap</h2>
+<p>The literature indicates a distinct gap: existing solutions are either overly complex spreadsheets requiring manual formula setup, or privacy-invasive commercial applications. There is a need for a lightweight, transparent, and responsive full-stack financial manager that combines clean CRUD operations, proactive budget threshold alerts, and visual analytics within a secure, multi-tenant architecture. SpendSmart directly addresses this gap.</p>
+<hr>
+<div class="page-break"></div><h1>CHAPTER 3: DESIGN FLOW &amp; SYSTEM METHODOLOGY</h1>
+<h2>3.1 Introduction</h2>
+<p>This chapter explains the system design and architecture of SpendSmart. It details the 3-tier full-stack architecture, Mongoose database schemas, REST API endpoints, security mechanisms, and client-side visualization components.</p>
+<h2>3.2 Overall Architectural Design</h2>
+<p>SpendSmart is built on the <strong>MERN</strong> stack:</p>
+<ul>
+<li><strong>Presentation Layer:</strong> React 18, React Router v6, Bootstrap 5, Chart.js.</li>
+<li><strong>Application Services Layer:</strong> Node.js runtime, Express.js web framework.</li>
+<li><strong>Persistence Layer:</strong> MongoDB Atlas cloud database managed via Mongoose ODM.</li>
+</ul>
+<h2>3.3 Database Design &amp; Mongoose Schemas</h2>
+<pre><code>   +--------------------------------------------------------+
+   |                       USER                             |
+   +--------------------------------------------------------+
+   | _id: ObjectId (Primary Key)                            |
+   | name: String (2 - 50 characters, required)             |
+   | email: String (Unique, lowercase, required)            |
+   | passwordHash: String (Salted bcrypt hash, required)    |
+   | createdAt / updatedAt: Timestamps                      |
+   +--------------------------------------------------------+
+             | 1                                  | 1
+             |                                    |
+             | *                                  | *
+   +-----------------------------+     +-------------------------------+
+   |        TRANSACTION          |     |            BUDGET             |
+   +-----------------------------+     +-------------------------------+
+   | _id: ObjectId (PK)          |     | _id: ObjectId (PK)            |
+   | userId: ObjectId (FK-&gt;User) |     | userId: ObjectId (FK-&gt;User)   |
+   | type: &#39;income&#39; | &#39;expense&#39;  |     | category: String (required)   |
+   | amount: Number (&gt; 0)        |     | monthlyLimit: Number (&gt;= 1)   |
+   | category: String (required) |     | month: Number (1 - 12)        |
+   | description: String (&lt;=200) |     | year: Number (&gt;= 2000)        |
+   | transactionDate: Date       |     +-------------------------------+
+   +-----------------------------+     | Index: (userId, cat, m, y)    |
+   | Index: (userId, date DESC)  |     | Constraint: UNIQUE            |
+   +-----------------------------+     +-------------------------------+
+</code></pre>
+<p><strong>Figure 3.1:</strong> Entity-Relationship (ER) Schema of SpendSmart Database.</p>
+<h3>3.3.1 User Identity Collection</h3>
+<p>The <code>User</code> schema stores authenticated user accounts. It enforces email uniqueness and lowercase normalization. The <code>passwordHash</code> field is populated via <code>bcryptjs.hash()</code> with salt factor 10. API responses explicitly sanitize this field via <code>.select(&#39;-passwordHash&#39;)</code>.</p>
+<h3>3.3.2 Transactions Collection &amp; Compound Indexing</h3>
+<p>The <code>Transaction</code> schema records individual financial events. It validates that amounts are strictly positive numbers ($&gt; 0$) and tags transactions as either <code>income</code> or <code>expense</code>. To ensure fast query execution when filtering transaction histories, compound indexes are established on <code>{ userId: 1, transactionDate: -1 }</code> and <code>{ userId: 1, type: 1, transactionDate: -1 }</code>.</p>
+<h3>3.3.3 Category Budgets Collection with Compound Uniqueness</h3>
+<p>The <code>Budget</code> schema records category spending ceilings. To prevent accidental duplicate budget records for the same category in the same month, a compound unique index is enforced:</p>
+<pre><code class="language-javascript">budgetSchema.index({ userId: 1, category: 1, month: 1, year: 1 }, { unique: true });
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Default System Categories</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Income Categories</strong></td>
+<td>Salary, Freelance, Scholarship, Business, Other Income</td>
+</tr>
+<tr>
+<td><strong>Expense Categories</strong></td>
+<td>Food, Transport, Education, Shopping, Rent, Bills, Healthcare, Entertainment, Other Expense</td>
+</tr>
+</tbody></table>
+<p><strong>Table 3.1:</strong> Summary of Supported Income &amp; Expense Categories.</p>
+<h2>3.4 REST API Architecture &amp; Route Specifications</h2>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Access Level</th>
+<th>Description &amp; Query Parameters</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>POST</code></td>
+<td><code>/api/auth/register</code></td>
+<td>Public</td>
+<td>Register new user account with name, email, password.</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/auth/login</code></td>
+<td>Public</td>
+<td>Authenticate user credentials and return signed JWT token.</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/auth/me</code></td>
+<td>Protected</td>
+<td>Return sanitized user profile for the active session token.</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><code>/api/auth/profile</code></td>
+<td>Protected</td>
+<td>Update user name or securely update password.</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/transactions</code></td>
+<td>Protected</td>
+<td>Record a new income or expense transaction.</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/transactions</code></td>
+<td>Protected</td>
+<td>List transactions with filters (<code>type</code>, <code>category</code>, <code>startDate</code>, <code>endDate</code>, <code>search</code>, <code>sortBy</code>).</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><code>/api/transactions/:id</code></td>
+<td>Protected</td>
+<td>Update existing transaction; verifies user record ownership.</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><code>/api/transactions/:id</code></td>
+<td>Protected</td>
+<td>Delete transaction record; verifies user record ownership.</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/transactions/categories</code></td>
+<td>Protected</td>
+<td>Fetch list of predefined income and expense categories.</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/budgets</code></td>
+<td>Protected</td>
+<td>Create monthly category budget limit; checks uniqueness.</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/budgets</code></td>
+<td>Protected</td>
+<td>Retrieve all budgets for month/year with spent &amp; % usage.</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><code>/api/budgets/:id</code></td>
+<td>Protected</td>
+<td>Update monthly limit for an existing category budget.</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><code>/api/budgets/:id</code></td>
+<td>Protected</td>
+<td>Remove category budget record.</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/dashboard/summary</code></td>
+<td>Protected</td>
+<td>Aggregate monthly totals, recent 5 transactions, and 6-month trends.</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/analytics/monthly</code></td>
+<td>Protected</td>
+<td>Return month-over-month comparisons and highest-spend category.</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/analytics/categories</code></td>
+<td>Protected</td>
+<td>Return percentage distribution of expenses across categories.</td>
+</tr>
+</tbody></table>
+<p><strong>Table 3.2:</strong> Complete SpendSmart REST API Specification Table.</p>
+<h2>3.5 Security Design &amp; Middleware Implementation</h2>
+<ul>
+<li><strong>bcryptjs Hashing:</strong> Passwords are salted with 10 rounds of Blowfish-based key derivation.</li>
+<li><strong>JWT Middleware (<code>protect</code>):</strong> Extracts bearer tokens from the HTTP <code>Authorization</code> header, verifies the cryptographic signature against <code>JWT_SECRET</code>, extracts the subject ID, and binds the user object to <code>req.user</code>.</li>
+<li><strong>Ownership Verification:</strong> Every update and delete operation verifies that <code>record.userId.toString() === req.user._id.toString()</code>, rejecting unauthorized requests with HTTP <code>403 Forbidden</code>.</li>
+<li><strong>express-rate-limit:</strong> Limits authentication endpoints to 100 requests per 15-minute window to mitigate brute-force attempts.</li>
+</ul>
+<hr>
+<div class="page-break"></div><h1>CHAPTER 4: RESULTS ANALYSIS AND SYSTEM VALIDATION</h1>
+<h2>4.1 Implementation Environment</h2>
+<ul>
+<li><strong>Runtime &amp; Language:</strong> Node.js v24.18.0 / JavaScript (ES2023)</li>
+<li><strong>Frontend Stack:</strong> React 18, React Router v6, Bootstrap 5.3, Bootstrap Icons, Chart.js, Vite 5.4</li>
+<li><strong>Backend Framework:</strong> Express.js 4.19, Mongoose 8.5, bcryptjs, jsonwebtoken</li>
+<li><strong>Database:</strong> MongoDB Atlas M0 Free Cluster (Cloud Deployment)</li>
+<li><strong>API Testing:</strong> Postman v10.x &amp; Visual Studio Code</li>
+</ul>
+<h2>4.2 REST API Test Cases &amp; Validation Matrix</h2>
+<table>
+<thead>
+<tr>
+<th>TC ID</th>
+<th>Test Scenario</th>
+<th>Endpoint &amp; Method</th>
+<th>Input Payload / Headers</th>
+<th>Expected HTTP Status</th>
+<th>Observed Result</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>TC-01</strong></td>
+<td>User Registration (Valid)</td>
+<td><code>POST /api/auth/register</code></td>
+<td>Valid name, unique email, 6+ char password</td>
+<td><code>201 Created</code></td>
+<td>Token and user object returned</td>
+<td><strong>PASS</strong></td>
+</tr>
+<tr>
+<td><strong>TC-02</strong></td>
+<td>Duplicate Email Handling</td>
+<td><code>POST /api/auth/register</code></td>
+<td>Existing email address</td>
+<td><code>409 Conflict</code></td>
+<td>Descriptive duplicate error</td>
+<td><strong>PASS</strong></td>
+</tr>
+<tr>
+<td><strong>TC-03</strong></td>
+<td>Valid User Login</td>
+<td><code>POST /api/auth/login</code></td>
+<td>Correct email &amp; password</td>
+<td><code>200 OK</code></td>
+<td>JWT bearer token returned</td>
+<td><strong>PASS</strong></td>
+</tr>
+<tr>
+<td><strong>TC-04</strong></td>
+<td>Invalid Password Login</td>
+<td><code>POST /api/auth/login</code></td>
+<td>Incorrect password string</td>
+<td><code>401 Unauthorized</code></td>
+<td>&quot;Invalid email or password&quot;</td>
+<td><strong>PASS</strong></td>
+</tr>
+<tr>
+<td><strong>TC-05</strong></td>
+<td>Short Password Validation</td>
+<td><code>POST /api/auth/register</code></td>
+<td>Password &lt; 6 characters</td>
+<td><code>400 Bad Request</code></td>
+<td>&quot;Password must be &gt;= 6 chars&quot;</td>
+<td><strong>PASS</strong></td>
+</tr>
+<tr>
+<td><strong>TC-06</strong></td>
+<td>Access without Token</td>
+<td><code>GET /api/transactions</code></td>
+<td>No Authorization header</td>
+<td><code>401 Unauthorized</code></td>
+<td>&quot;No token provided&quot;</td>
+<td><strong>PASS</strong></td>
+</tr>
+<tr>
+<td><strong>TC-07</strong></td>
+<td>Create Income Entry</td>
+<td><code>POST /api/transactions</code></td>
+<td><code>type: &quot;income&quot;, amount: 35000</code></td>
+<td><code>201 Created</code></td>
+<td>Saved with user&#39;s ObjectId</td>
+<td><strong>PASS</strong></td>
+</tr>
+<tr>
+<td><strong>TC-08</strong></td>
+<td>Create Expense Entry</td>
+<td><code>POST /api/transactions</code></td>
+<td><code>type: &quot;expense&quot;, amount: 1500</code></td>
+<td><code>201 Created</code></td>
+<td>Balance adjusted accurately</td>
+<td><strong>PASS</strong></td>
+</tr>
+<tr>
+<td><strong>TC-09</strong></td>
+<td>Update Transaction Record</td>
+<td><code>PUT /api/transactions/:id</code></td>
+<td><code>amount: 1800, category: &quot;Food&quot;</code></td>
+<td><code>200 OK</code></td>
+<td>Record modified, no duplicate</td>
+<td><strong>PASS</strong></td>
+</tr>
+<tr>
+<td><strong>TC-10</strong></td>
+<td>Delete Transaction Record</td>
+<td><code>DELETE /api/transactions/:id</code></td>
+<td>Target transaction ID</td>
+<td><code>200 OK</code></td>
+<td>Removed from database</td>
+<td><strong>PASS</strong></td>
+</tr>
+<tr>
+<td><strong>TC-11</strong></td>
+<td>Filter by Category &amp; Date</td>
+<td><code>GET /api/transactions</code></td>
+<td><code>?category=Food&amp;startDate=...</code></td>
+<td><code>200 OK</code></td>
+<td>Only matching records returned</td>
+<td><strong>PASS</strong></td>
+</tr>
+<tr>
+<td><strong>TC-12</strong></td>
+<td>Create Monthly Budget</td>
+<td><code>POST /api/budgets</code></td>
+<td><code>category: &quot;Food&quot;, monthlyLimit: 5000</code></td>
+<td><code>201 Created</code></td>
+<td>Budget persisted successfully</td>
+<td><strong>PASS</strong></td>
+</tr>
+<tr>
+<td><strong>TC-13</strong></td>
+<td>Duplicate Budget Prevention</td>
+<td><code>POST /api/budgets</code></td>
+<td>Same user, category, month, year</td>
+<td><code>409 Conflict</code></td>
+<td>&quot;Budget already exists&quot;</td>
+<td><strong>PASS</strong></td>
+</tr>
+<tr>
+<td><strong>TC-14</strong></td>
+<td>Budget Usage at 80%</td>
+<td><code>GET /api/budgets</code></td>
+<td>Month expenses = 4200, limit = 5000</td>
+<td><code>200 OK</code></td>
+<td>Status flagged as &#39;warning&#39;</td>
+<td><strong>PASS</strong></td>
+</tr>
+<tr>
+<td><strong>TC-15</strong></td>
+<td>Budget Breach (&gt;100%)</td>
+<td><code>GET /api/budgets</code></td>
+<td>Month expenses = 5500, limit = 5000</td>
+<td><code>200 OK</code></td>
+<td>Status flagged as &#39;exceeded&#39;</td>
+<td><strong>PASS</strong></td>
+</tr>
+<tr>
+<td><strong>TC-16</strong></td>
+<td>Cross-User Data Isolation</td>
+<td><code>GET /api/transactions/:id</code></td>
+<td>User B token requesting User A record</td>
+<td><code>403 Forbidden</code></td>
+<td>Access blocked securely</td>
+<td><strong>PASS</strong></td>
+</tr>
+<tr>
+<td><strong>TC-17</strong></td>
+<td>Invalid ObjectId Format</td>
+<td><code>GET /api/transactions/invalid123</code></td>
+<td>Malformed hexadecimal ID</td>
+<td><code>400 Bad Request</code></td>
+<td>Handled by CastError handler</td>
+<td><strong>PASS</strong></td>
+</tr>
+</tbody></table>
+<p><strong>Table 4.1:</strong> QA Testing Results and REST API Validation Matrix (17 Cases).</p>
+<hr>
+<div class="page-break"></div><h2>4.3 Screen-by-Screen User Interface Demonstration</h2>
+<h3>4.3.1 Authentication &amp; Registration Portal</h3>
+<p>The portal features a clean, centered interface styled in deep navy blue. It validates email structure and password length in real time, presenting user-friendly error alerts when validation criteria are not met.</p>
+<pre><code>[ INSERT FIGURE 4.1 HERE: SCREENSHOT OF SPENDSMART LOGIN / REGISTRATION PAGE ]
+</code></pre>
+<p><em>Figure 4.1: SpendSmart User Registration and Secure Login Interface.</em></p>
+<hr>
+<h3>4.3.2 Financial Dashboard &amp; Metric Visualizations</h3>
+<p>The main dashboard serves as the central operational hub. It computes four key metric cards: <strong>Total Income</strong>, <strong>Total Expenses</strong>, <strong>Net Balance</strong> ($\text{Income} - \text{Expenses}$), and <strong>Transaction Count</strong>. The charts illustrate 6-month historical trends (Bar chart) and category-wise expense distributions (Doughnut chart) via Chart.js.</p>
+<pre><code>[ INSERT FIGURE 4.2 HERE: SCREENSHOT OF FINANCIAL DASHBOARD &amp; STATISTIC CARDS ]
+</code></pre>
+<p><em>Figure 4.2: SpendSmart Comprehensive Financial Dashboard with Metric Cards &amp; Visualizations.</em></p>
+<hr>
+<h3>4.3.3 Transaction Management &amp; Filter Workspace</h3>
+<p>The transaction ledger displays records in reverse chronological order. It provides multi-parameter filtering by type (Income vs. Expense), category dropdown, start/end dates, and real-time description search. Income values are highlighted with green badges (<code>+ ₹</code>), while expenses appear with red badges (<code>- ₹</code>).</p>
+<pre><code>[ INSERT FIGURE 4.3 HERE: SCREENSHOT OF TRANSACTION HISTORY TABLE &amp; FILTER TOOLBAR ]
+</code></pre>
+<p><em>Figure 4.3: Transaction Ledger Workspace with Category &amp; Date Filter Controls.</em></p>
+<hr>
+<h3>4.3.4 Budget Utilization &amp; Alert Notification Cards</h3>
+<p>The budget management page allows users to set monthly spending ceilings for each category. Progress bars visually track consumption. Categories exceeding 80% display amber warning badges, and categories exceeding 100% display red breach alerts.</p>
+<pre><code>[ INSERT FIGURE 4.4 HERE: SCREENSHOT OF BUDGET MANAGEMENT PAGE &amp; PROGRESS BARS ]
+</code></pre>
+<p><em>Figure 4.4: Monthly Budget Management Interface with Warning Progress Bars.</em></p>
+<hr>
+<h3>4.3.5 Reports, Month-over-Month Analytics &amp; Category Distribution</h3>
+<p>The analytics workspace compares current and previous month spending, highlights the peak expenditure category, and presents an itemized categorical breakdown table.</p>
+<pre><code>[ INSERT FIGURE 4.5 HERE: SCREENSHOT OF REPORTS &amp; ANALYTICS CHARTS ]
+</code></pre>
+<p><em>Figure 4.5: Reports and Analytical Distribution Dashboard (Chart.js Visualization).</em></p>
+<hr>
+<h3>4.3.6 Live Cloud Database Verification (MongoDB Compass)</h3>
+<p>The persistent database state can be inspected in real time using MongoDB Compass or MongoDB Atlas, verifying that passwords are encrypted and records are properly structured.</p>
+<pre><code>[ INSERT FIGURE 4.6 HERE: SCREENSHOT OF MONGODB COMPASS SHOWING SPENDSMART_DB COLLECTIONS ]
+</code></pre>
+<p><em>Figure 4.6: Live Cloud Database Collection Verification in MongoDB Compass.</em></p>
+<hr>
+<div class="page-break"></div><h1>CHAPTER 5: CONCLUSION AND FUTURE SCOPE</h1>
+<h2>5.1 Conclusion</h2>
+<p>The <strong>SpendSmart — Smart Expense &amp; Budget Manager</strong> project was successfully developed, tested, and demonstrated in accordance with the MCA Technical Training guidelines. The system demonstrates a practical implementation of the MERN architecture, combining secure stateless JWT authentication, salted bcrypt password hashing, dynamic Mongoose aggregation queries, and responsive React/Bootstrap interfaces.</p>
+<p>Key achievements include:</p>
+<ol>
+<li><strong>Accurate Cash-Flow Accounting:</strong> Dynamic calculation of net balances and category summaries based on real database records without hardcoding.</li>
+<li><strong>Proactive Budgeting:</strong> Automated dual-threshold alerts that warn users at 80% budget utilization and flag 100% budget breaches.</li>
+<li><strong>Data Security &amp; Multi-Tenancy:</strong> Robust server-side verification ensuring that users access only their own financial data.</li>
+<li><strong>Demonstrable Quality:</strong> Clean project structure, comprehensive documentation, verified Postman test suites, and public version-controlled repository on GitHub.</li>
+</ol>
+<h2>5.2 Limitations</h2>
+<p>While fully functional for personal finance tracking, the system has certain deliberate scope boundaries:</p>
+<ul>
+<li>Requires manual entry of income and expenses (no direct banking API integration).</li>
+<li>Does not currently convert between international currencies; it is optimized specifically for Indian Rupees (₹).</li>
+<li>Recurring subscriptions must be logged manually each month.</li>
+</ul>
+<h2>5.3 Future Work</h2>
+<ol>
+<li><strong>Automated Receipt Parsing (OCR):</strong> Integrating machine learning OCR engines (such as Tesseract.js) to extract amounts and dates from scanned shopping bills.</li>
+<li><strong>Scheduled Recurring Transactions:</strong> Implementing cron-like background jobs to record regular salary deposits or rent payments automatically.</li>
+<li><strong>PDF / Excel Financial Statement Export:</strong> Allowing users to download formatted financial summaries for tax reporting.</li>
+<li><strong>Predictive Budgeting:</strong> Integrating lightweight time-series forecasting models to recommend personalized monthly category budgets based on historical spending habits.</li>
+</ol>
+<hr>
+<div class="page-break"></div><h1>REFERENCES</h1>
+<ol>
+<li>Chodorow, K. (2013). <em>MongoDB: The Definitive Guide: Powerful and Scalable Data Storage</em>. O’Reilly Media.</li>
+<li>Banks, A., and Porcello, E. (2020). <em>Learning React: Modern Patterns for Developing React Apps</em>. 2nd Edition, O’Reilly Media.</li>
+<li>Brown, E. (2019). <em>Web Development with Node and Express: Leveraging the JavaScript Stack</em>. 2nd Edition, O’Reilly Media.</li>
+<li>Resig, J., Bibeault, B., and Maras, J. (2016). <em>Secrets of the JavaScript Ninja</em>. 2nd Edition, Manning Publications.</li>
+<li>Internet Engineering Task Force (IETF). (2015). <em>RFC 7519: JSON Web Token (JWT)</em>. Available at: <a href="https://datatracker.ietf.org/doc/html/rfc7519">https://datatracker.ietf.org/doc/html/rfc7519</a>.</li>
+<li>Mozilla Developer Network (MDN). (2024). <em>Express Web Framework (Node.js/JavaScript)</em>. Available at: <a href="https://developer.mozilla.org">https://developer.mozilla.org</a>.</li>
+<li>Bootstrap Core Team. (2024). <em>Bootstrap 5 Documentation &amp; Design System</em>. Available at: <a href="https://getbootstrap.com">https://getbootstrap.com</a>.</li>
+<li>Chart.js Community. (2024). <em>Chart.js: Simple yet flexible JavaScript charting for designers &amp; developers</em>. Available at: <a href="https://www.chartjs.org">https://www.chartjs.org</a>.</li>
+</ol>
+<hr>
+<div class="page-break"></div><h1>APPENDIX</h1>
+<h2>A. User Manual &amp; Local Installation Guide</h2>
+<h3>Step 1: Clone the GitHub Repository</h3>
+<pre><code class="language-powershell">git clone https://github.com/gautam7003/spendsmart.git
+cd spendsmart
+</code></pre>
+<h3>Step 2: Configure Environment Variables</h3>
+<p>Inside <code>server/.env</code>, verify your connection string:</p>
+<pre><code class="language-env">PORT=5000
+MONGODB_URI=mongodb+srv://gautammishra4321_db_user:NjzaeUsISoQAbWxH@cluster0.fhwf4mn.mongodb.net/spendsmart_db?retryWrites=true&amp;w=majority
+JWT_SECRET=spendsmart_mca_super_secret_jwt_key_2026
+CLIENT_URL=http://localhost:5173
+NODE_ENV=development
+</code></pre>
+<h3>Step 3: Install Dependencies &amp; Run</h3>
+<p>Open two terminal windows:</p>
+<p><strong>Terminal 1 (Backend Server):</strong></p>
+<pre><code class="language-powershell">cd server
+npm install
+npm run dev
+# Server running at http://localhost:5000
+</code></pre>
+<p><strong>Terminal 2 (Frontend Client):</strong></p>
+<pre><code class="language-powershell">cd client
+npm install
+npm run dev
+# Vite client running at http://localhost:5173
+</code></pre>
+<hr>
+<h2>B. Viva Voce Preparation Guide (High-Yield Questions &amp; Answers)</h2>
+<h3>Q1: What is the architectural design pattern used in SpendSmart?</h3>
+<p><strong>Answer:</strong> SpendSmart employs a decoupled <strong>3-Tier Client-Server Architecture</strong> adhering to RESTful principles. The client layer is a single-page application built with React 18 and Bootstrap 5; the application layer is powered by Node.js and Express.js; and the data layer utilizes MongoDB Atlas accessed via Mongoose ODM.</p>
+<h3>Q2: Why did you use JWT instead of traditional server-side session cookies?</h3>
+<p><strong>Answer:</strong> JSON Web Tokens (JWT) provide a stateless authentication mechanism. The server does not need to store active sessions in memory or query a session store on every incoming request. The client includes the cryptographically signed token in the <code>Authorization: Bearer &lt;token&gt;</code> header, making the backend horizontally scalable and decoupled from the client.</p>
+<h3>Q3: How do you protect against SQL / NoSQL injection attacks?</h3>
+<p><strong>Answer:</strong> By using Mongoose ODM, all queries are parameterized and cast to defined schema types (e.g., String, Number, ObjectId), preventing malicious payload injection. Furthermore, critical routes validate data types before query execution.</p>
+<h3>Q4: How is password security implemented?</h3>
+<p><strong>Answer:</strong> Passwords are never stored in plaintext. SpendSmart uses <code>bcryptjs</code> with a work factor of 10. <code>bcrypt</code> automatically generates a random salt for every user, defending against rainbow-table and dictionary attacks. The hash is compared during login using constant-time comparisons via <code>bcrypt.compare()</code>.</p>
+<h3>Q5: How is multi-user data isolation enforced?</h3>
+<p><strong>Answer:</strong> The server never trusts client-supplied user IDs. The <code>protect</code> middleware decodes the JWT token, verifies the cryptographic signature, and extracts <code>req.user._id</code>. All transaction and budget queries filter strictly by <code>{ userId: req.user._id }</code>. Update and delete routes explicitly verify that <code>record.userId.toString() === req.user._id.toString()</code>, returning <code>403 Forbidden</code> on any unauthorized attempt.</p>
+<h3>Q6: How does the budget alert mechanism work?</h3>
+<p><strong>Answer:</strong> The budget engine aggregates expense transactions matching the user&#39;s category, month, and year using MongoDB aggregation:
+$$\text{Utilization Percentage} = \left(\frac{\text{Total Category Expenses}}{\text{Monthly Limit}}\right) \times 100$$
+If utilization reaches 80%, the system flags a <code>warning</code> state with an amber badge. If it reaches or exceeds 100%, it flags an <code>exceeded</code> state with a red badge and displays a prominent warning banner across the dashboard.</p>
+
+</body>
+</html>
